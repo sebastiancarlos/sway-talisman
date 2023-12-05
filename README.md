@@ -16,7 +16,8 @@ GUI application launchers are cool, but if your are a Sway user, you might be
 interested in taking your minimalism to the next level.
 
 It turns out we've had application launchers since the 1960's: Terminals and
-shells!
+shells! Indeed, shells are the only programing languages in which launching a new 
+process is a first-class citizen.
 
 So, why not embrace a minimalist tiling-window-manager workflow in which your terminal
 __is__ your application launcher?
