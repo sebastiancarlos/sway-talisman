@@ -27,7 +27,7 @@ If you go that route, `sway-talisman` might be for you.
 Let's look at it from first principles. **Application launchers are:**
 1. Floating windows
 2. They open in response to a keybinding.
-3. They display and autocomplete a list of application.
+3. They display and autocomplete a list of applications.
 4. They close after opening an application.
 
 `sway` provides features **1 through 3** if your workflow consists of having a
