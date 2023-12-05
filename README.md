@@ -7,7 +7,7 @@ Welcome to `sway-talisman`, the ultra-minimalist approach to application
 launching within the Sway window manager. 
 
 This project leverages the power of terminals and Sway's scratchpad to function
-as an intuitive GUI app launcher with no dependencies.
+as an intuitive app launcher with no dependencies.
 
 This is __not__ a TUI launcher; It just makes your terminal even __more__ of a launcher.
 
