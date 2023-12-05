@@ -86,7 +86,9 @@ bindsym $mod+minus exec sway-scratchpad-toggle
 ...
 ```
 
-3. Create aliases or scripts which call `sway-launch`, and call them from your
+3. Make sure you have a terminal in your scratchpad. (If you have one already, you'll need to close it and create a new one for the changes to apply.)
+
+4. Create aliases or scripts which call `sway-launch`, and call them from your
    regular terminals, from keybindings, or from your brand new
    terminal-scratchpad launcher! 
 
