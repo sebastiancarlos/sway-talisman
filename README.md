@@ -58,8 +58,8 @@ adding extra automation and configuration before and after opening your app.
 - **Modular design.** Comes with several utility scripts, useful on their own.
 - Easy installation method – **It's just a handful of bash scripts!**
 - Embraces the aesthetic of power-user minimalism.
-- Supports both **Sway and i3**.
 - **No dependencies** besides Sway.
+- Supports both **Sway and i3**.
 
 ## Installation
 1. Clone the repo and run:
