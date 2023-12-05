@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+# sway-launch
+
+shopt -s xpg_echo
+
+bold="\033[1m"
+green="\033[32m"
+red="\033[31m"
+reset="\033[0m"
+
+# swaymsg, fallback to i3-msg
+swaymsg() {
+  if command -v swaymsg >/dev/null 2>&1; then
+    command swaymsg "$@"
+  else
+    command i3-msg "$@"
+  fi
+}
+
+usage() {
+  echo "${bold}Usage:${reset} ${green}sway-workspace${reset} [OPTIONS] [VALUE]"
+  echo
+  echo "- Go to provided workspace."
+  echo "- If no value is provided, print the current workspace."
+  echo
+  echo "VALUE can be:"
+  echo '- "next", "prev", "next-empty", or a number.'
+  echo
+  echo "OPTIONS:"
+  echo '  -q, --quiet               Do not print any output. (Useful for wrapping scripts'
+  echo '                            with their own outputs.)'
+  echo "  -h, --help                Show this help message."
+}
+
+
+# parse options
+quiet=0
+workspace=""
+while [[ "$#" -gt 0 ]]; do
+  case "$1" in
+    -q|--quiet)
+      quiet=1
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    current|next|prev|next-empty|[0-9]*)
+      workspace=$1
+      shift
+      ;;
+    *)
+      echo "Invalid argument: $1" 
+      [[ $quiet -eq 0 ]] && usage
+      exit 1
+      ;;
+  esac
+done
+
+# if no argument, print current workspace
+if [[ "$workspace" == "" ]]; then
+  sway-get-current-workspace
+  exit 0
+fi
+
+# handle "next", "prev" and number, in which case we message sway
+if [[ "$workspace" =~ ^[0-9]+$ ]] || [[ "$workspace" == "next" ]] || [[ "$workspace" == "prev" ]]; then
+  [[ $quiet -eq 0 ]] && echo "Going to workspace ${green}${workspace}${reset} ..."
+  swaymsg workspace "$workspace"
+  exit 0
+fi
+
+# handle "next-empty"
+if [[ "$workspace" == "next-empty" ]]; then
+  workspace=$(sway-get-next-empty-workspace)
+  [[ $quiet -eq 0 ]] && echo "Going to workspace ${green}${workspace}${reset} ..."
+  swaymsg workspace "$workspace"
+  exit 0
+fi

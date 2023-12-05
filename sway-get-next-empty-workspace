@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+# sway-get-next-empty-workspace
+#  - Print number of the first empty workspace to the right of the current one
+#    (or the current workspace if it is empty).
+
+shopt -s xpg_echo
+
+bold="\033[1m"
+green="\033[32m"
+reset="\033[0m"
+
+# print usage message on -h/--help
+if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
+  echo "${bold}Usage:${reset} ${green}sway-get-next-empty-workspace${reset}"
+  echo "  - Print number of the first empty workspace to the right of the"
+  echo "    current one (or the current workspace if it is empty)."
+  exit 0
+fi
+
+# swaymsg, fallback to i3-msg
+swaymsg() {
+  if command -v swaymsg >/dev/null 2>&1; then
+    command swaymsg "$@"
+  else
+    command i3-msg "$@"
+  fi
+}
+
+# get number of first empty workspace to the right of the current one
+workspaces=$(swaymsg -t get_workspaces)
+current_workspace=$(echo "${workspaces}" | jq '.[] | select(.focused==true).num')
+
+
+next_workspace=""
+i=$current_workspace
+while [[ -z "${browser_workspace}" ]]; do
+  # if workspace doesn't exist, set browser workspace to current workspace
+  workspace=$(echo "${workspaces}" | jq ".[] | select(.num==${i})")
+  if [[ -z "$workspace" ]]; then
+    next_workspace="${i}"
+    break
+  fi
+
+  # if workspace is empty, set browser workspace to current workspace 
+  workspace_nodes=$(swaymsg -t get_tree | jq -r --arg workspace "$i" '.nodes[].nodes[] | select(.name==$workspace) | .nodes[]')
+  if [[ -z "$workspace_nodes" ]]; then
+    next_workspace="${i}"
+    break
+  fi
+
+  # else, increment current workspace and try again
+  i=$((i+1))
+done
+
+echo "${next_workspace}"

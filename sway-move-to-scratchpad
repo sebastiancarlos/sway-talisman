@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# sway-move-to-scratchpad
+# - Move the focused window to the scratchpad (and add a border)
+
+green='\033[0;32m'
+red='\033[0;31m'
+bold='\033[1m'
+reset='\033[0m'
+
+shopt -s xpg_echo
+
+# print usage on -h or --help
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  echo "${bold}Usage:${reset} ${green}sway-move-to-scratchpad${reset}"
+  echo "  - Move the focused window to the scratchpad"
+  echo "  - Also add a border and a mark called \"scratchpad\""
+  exit 0
+fi
+
+# swaymsg, fallback to i3-msg
+swaymsg() {
+  if command -v swaymsg >/dev/null 2>&1; then
+    command swaymsg "$@"
+  else
+    command i3-msg "$@"
+  fi
+}
+
+# this is a personal preference
+swaymsg border pixel 1
+
+# Mark the window as "scratchpad", needed to interact with it.
+# - Note: The name "scratchpad" might not be accurate since there's a
+#         difference between the scratchpad and a window in the scratchpad
+#         (this). However, my Sway workflow relies on having only one window in
+#         the scratchpad at a time, so this is fine for me.
+swaymsg mark 'scratchpad'
+
+swaymsg move scratchpad
+
+echo "Moved window to scratchpad."

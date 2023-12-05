@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# sway-is-scratchpad-focused
+
+# swaymsg, fallback to i3-msg
+swaymsg() {
+  if command -v swaymsg >/dev/null 2>&1; then
+    command swaymsg "$@"
+  else
+    command i3-msg "$@"
+  fi
+} 
+
+# print usage on -h/--help
+if [[ "$1" == '-h' || "$1" == '--help' ]]; then
+    echo 'Usage: sway-is-scratchpad-focused'
+    echo '  - If focused, returns 0 and print "true"'
+    echo '  - If not, returns 1 and print "false"'
+    exit 0
+fi
+
+# Query sway for the focused container id and scratchpad id.
+focused_container=$(swaymsg -t get_tree | jq -r 'recurse(.nodes[]) | recurse(.floating_nodes[]) | select(.focused) | .id')
+
+scratchpad_id=$(swaymsg -t get_tree | jq -r 'recurse(.nodes[]) | recurse(.floating_nodes[]) | select(.marks[0] == "scratchpad") | .id')
+
+if [ "$focused_container" == "$scratchpad_id" ]; then
+    echo "true"
+    exit 0
+else
+    echo "false"
+    exit 1
+fi
+
