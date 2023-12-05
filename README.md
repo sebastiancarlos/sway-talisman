@@ -12,11 +12,11 @@ as an **app launcher** with no dependencies.
 This is __not__ a TUI launcher; It just makes your terminal even __more__ of a launcher.
 
 ## Introduction
-GUI application launchers are cool, but if your are a Sway user, you might be
+GUI application launchers are cool, but if you're a Sway user, you might be
 interested in taking your minimalism to the next level.
 
 It turns out we've had application launchers since the 1960's: Terminals and
-shells! Indeed, shells are the only programing languages in which launching a new 
+shells! Indeed, shells are the only programming languages in which launching a new 
 process is a first-class citizen.
 
 So, why not embrace a minimalist tiling-window-manager workflow in which your terminal
@@ -37,8 +37,8 @@ single terminal in your scratchpad.
 piece of closing the scratchpad after launching the app.
 
 Another issue with GUI application launchers is that they can be overwhelming:
-They usually show every single GUI application in your system, even those which
-came with packages and which you never intend to open.
+They usually show every single GUI application in your system, even those that
+came with packages you never intend to open.
 
 `sway-talisman` provides instead an **additive approach**: You are responsible for
 defining every app you want to launch. And nothing stops you from
@@ -56,7 +56,7 @@ adding extra automation and configuration before and after opening your app.
   **next empty workspace to the right**.
 - Detaches application processes for a clutter-free terminal session. No app logs.
 - **Modular design.** Comes with several utility scripts, useful on their own.
-- Easy installation method – **it's just a handful of bash scripts!**
+- Easy installation method – **It's just a handful of bash scripts!**
 - Embraces the aesthetic of power-user minimalism.
 - Supports both **Sway and i3**.
 - **No dependencies** besides Sway.
@@ -65,12 +65,12 @@ adding extra automation and configuration before and after opening your app.
 1. Clone the repo and run:
 ```bash
 make
-make install # This will install 6 bash scripts in your path.
+make install # This will install seven bash scripts in your path.
              # They can be removed with `make uninstall`
 ```
 
 2. In your Sway config, replace your bindings to move a window to the
-   scratchpad, and to toggle it.
+   scratchpad and to toggle it.
 
 **Note:** This is needed to add a mark to the scratchpad terminal, so it can be found by `sway-talisman`.
 
@@ -89,7 +89,7 @@ bindsym $mod+minus exec sway-scratchpad-toggle
 3. Open a new terminal and move it to your scratchpad. (If you have one already, you'll need to close it and open a new one for the changes to apply.)
 
 4. Create aliases or scripts which call `sway-launch`, and call them from your
-   regular terminals, from keybindings, or from your brand new
+   regular terminals, from keybindings, or your brand-new
    terminal-scratchpad launcher! 
 
 Example:
@@ -116,7 +116,7 @@ Usage: sway-launch [OPTIONS] [--]  <command> [arguments...]
   is called from a terminal running in the Sway/i3 scratchpad.
 
 - After running it, the scratchpad is hidden. This is meant to simulate the UX of an
-  application launcher like rofi, but from a terminal running in the scratchpad.
+  application launcher like `rofi`, but from a terminal running in the scratchpad.
 
 Options:
   -w, --workspace=<value>   Launch the command in the given workspace.
