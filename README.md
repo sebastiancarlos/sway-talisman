@@ -9,6 +9,8 @@ launching within the Sway window manager.
 This project leverages the power of terminals and Sway's scratchpad to function
 as an intuitive GUI app launcher with no dependencies.
 
+This is __not__ a TUI launcher; It just makes your terminal even __more__ of a launcher.
+
 ## Introduction
 GUI application launchers are cool, but if your are a Sway user, you might be
 interested in taking your minimalism to the next level.
@@ -16,14 +18,12 @@ interested in taking your minimalism to the next level.
 It turns out we've had application launchers since the 1960's: Terminals and
 shells!
 
-So, why not embracing a tiling window manager workflow in which your terminal
-_is_ your application launcher?
+So, why not embrace a minimalist tiling-window-manager workflow in which your terminal
+__is__ your application launcher?
 
 If you go that route, `sway-talisman` might be for you.
 
-Let's look at it from first principles. 
-
-Application launchers are:
+Let's look at it from first principles. **Application launchers are:**
 1. Floating windows
 2. They open in response to a keybinding.
 3. They display and autocomplete a list of application.
@@ -39,24 +39,25 @@ Another issue with GUI application launchers is that they can be overwhelming:
 They usually show every single GUI application in your system, even those which
 came with packages and which you never intend to open.
 
-`sway-talisman` provides instead an additive approach: You are responsible for
-defining every app you want to be able to launch. And nothing stops you from
+`sway-talisman` provides instead an **additive approach**: You are responsible for
+defining every app you want to launch. And nothing stops you from
 adding extra automation and configuration before and after opening your app.
 
 ## Features
-- Turns your scratchpade into your ever-ready terminal and application launcher
+- Turns your scratchpad into your ever-ready terminal and application launcher
   combo.
-- Every benefit of your terminal (history, recalling commands) is still there
+- Every benefit of your shell (history, tab completion) is still there
   in your minimalist app launcher.
 - Automatically hides after launch, mimicking dedicated launcher behavior.
 - Configure custom pre-launch, post-launch, and window placement logistics.
   Just make a wrapper script and do whatever you want.
 - Easily configure in which workspace your app will launch. For example, the
-  next empty workspace to the right.
-- Detaches application processes for a clutter-free terminal session.
-- Modular design. Comes with several utility scripts, useful on their own.
-- Easy installation method – it's just a handful of bash scripts!
+  **next empty workspace to the right**.
+- Detaches application processes for a clutter-free terminal session. No app logs.
+- **Modular design.** Comes with several utility scripts, useful on their own.
+- Easy installation method – **it's just a handful of bash scripts!**
 - Embraces the aesthetic of power-user minimalism.
+- Supports both **Sway and i3**.
 
 ## Installation
 1. Clone the repo and run:
@@ -69,8 +70,7 @@ make install # This will install 6 bash scripts in your path.
 2. In your Sway config, replace your bindings to move a window to the
    scratchpad, and to toggle it.
 
-**Note:** This is needed to add a mark to the scratchpad terminal, so it can
-better be referenced by `sway-talisman`.
+**Note:** This is needed to add a mark to the scratchpad terminal, so it can be found by `sway-talisman`.
 
 ```
 ...
@@ -191,15 +191,6 @@ Usage: sway-scratchpad-toggle [-h|--help] [-q|--quiet]
 ## License
 MIT
 
-## Usage
-
-Activate the scratchpad and start applications with simplicity:
-
-```bash
-<mod>- # Opens the scratchpad
-firefox<ret> # Launches Firefox and hides the scratchpad
-```
-
 ## Contributing
 
 We welcome contributions of all kinds. If you have a suggestion or fix, please
@@ -207,4 +198,3 @@ feel free to open an issue or pull request.
 
 Enjoy a lightweight, efficient, and terminal-centric launching experience with
 `sway-talisman`!
-
