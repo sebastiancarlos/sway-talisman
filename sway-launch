@@ -126,7 +126,6 @@ fi
 # - Redirect all output to /dev/null
 # - Make exit code available to this script
 (
-  # eval "$@" > /dev/null 2>&1
   ${cmd} "${args[@]}" > /dev/null 2>&1
   echo $?
 ) > ${exit_code_file} &
