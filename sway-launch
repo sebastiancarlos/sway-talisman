@@ -140,7 +140,7 @@ fi
 
 [[ $quiet -eq 0 ]] && echo "${bold}sway-launch:${reset} ${green}Done!${reset}"
 
-# If launching from the scratchpad, hide it aftrewards
+# If launching from the scratchpad, hide it afterwards
 # - This simulates the UX of application launchers like rofi, but for a
 #   terminal running in the scratchpad.
 if [[ $hide_scratchpad -eq 1 && $is_scratchpad_focused == "true" ]]; then
