@@ -4,7 +4,7 @@
 </p>
 
 Welcome to `sway-talisman`, the ultra-minimalist approach to launching 
-applications within the Sway/i3 window managers. 
+applications within the **Sway/i3** window managers. 
 
 This project leverages the power of terminals and Sway's scratchpad to function
 as an **app launcher** with no dependencies.
