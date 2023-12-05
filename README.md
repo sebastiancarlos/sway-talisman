@@ -78,11 +78,11 @@ make install # This will install 6 bash scripts in your path.
 ...
 # Move the currently focused window to the scratchpad
 # bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+Shift+minus exec wm-move-to-scratchpad
+bindsym $mod+Shift+minus exec sway-move-to-scratchpad
 ...
 # Move the currently focused window to the scratchpad
 # bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus exec wm-scratchpad-toggle
+bindsym $mod+minus exec sway-scratchpad-toggle
 ...
 ```
 
