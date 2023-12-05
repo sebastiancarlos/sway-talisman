@@ -45,8 +45,8 @@ defining every app you want to launch. And nothing stops you from
 adding extra automation and configuration before and after opening your app.
 
 ## Features
-- Turns your scratchpad into your ever-ready terminal and application launcher
-  combo.
+- Use the same keybinding for two tasks: Opening your ever-ready terminal, and
+  launching apps. Killer combo!
 - Every benefit of your shell (history, tab completion) is still there
   in your minimalist app launcher.
 - Automatically hides after launch, mimicking dedicated launcher behavior.
