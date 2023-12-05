@@ -74,7 +74,7 @@ make install # This will install 6 bash scripts in your path.
 
 **Note:** This is needed to add a mark to the scratchpad terminal, so it can be found by `sway-talisman`.
 
-```
+```bash
 ...
 # Move the currently focused window to the scratchpad
 # bindsym $mod+Shift+minus move scratchpad
@@ -93,13 +93,13 @@ bindsym $mod+minus exec sway-scratchpad-toggle
    terminal-scratchpad launcher! 
 
 Example:
-```
+```bash
 # in .bashrc
 alias firefox='sway-launch --workspace=next-empty -- firefox'
 ```
 
 Then run:
-```
+```bash
 <mod>- # open scratchpad
 firefox<ret> # launch firefox, scratchpad is then hidden.
 ```
