@@ -1,7 +1,9 @@
-# sway-talisman: Sway – Terminal Application Launcher in Scratchpad, Minimalist And Native
-*sway-talisman - Enchant your Sway experience.*
+# Sway-Talisman: Sway – Terminal Application Launcher in Scratchpad, Minimalist And Native
+<p align="center">
+  <img src="https://github.com/sebastiancarlos/sway-talisman/assets/88276600/7847675e-3758-43b5-bc86-e39f18fb7af1" />
+</p>
 
-Welcome to sway-talisman, the ultra-minimalist approach to application
+Welcome to `sway-talisman`, the ultra-minimalist approach to application
 launching within the Sway window manager. 
 
 This project leverages the power of terminals and Sway's scratchpad to function
@@ -15,7 +17,7 @@ It turns out we've had application launchers since the 1960's: Terminals and
 shells!
 
 So, why not embracing a tiling window manager workflow in which your terminal
-**is** your application launcher?
+_is_ your application launcher?
 
 If you go that route, `sway-talisman` might be for you.
 
@@ -27,10 +29,10 @@ Application launchers are:
 3. They display and autocomplete a list of application.
 4. They close after opening the application.
 
-`sway` provides features 1 through 3 if your workflow consists of having a
+`sway` provides features **1 through 3** if your workflow consists of having a
 single terminal in your scratchpad.
 
-`sway-talisman` is here to help you with step 4, providing the missing UX
+`sway-talisman` is here to help you with **feature 4**, providing the missing UX
 piece of closing the scratchpad after launching the app.
 
 Another issue with GUI application launchers is that they can be overwhelming:
