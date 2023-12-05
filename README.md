@@ -200,5 +200,5 @@ MIT
 We welcome contributions of all kinds. If you have a suggestion or fix, please
 feel free to open an issue or pull request.
 
-Enjoy a lightweight, efficient, and terminal-centric launching experience with
-`sway-talisman`!
+_Enjoy a lightweight, efficient, and terminal-centric launching experience with
+`sway-talisman`!_
