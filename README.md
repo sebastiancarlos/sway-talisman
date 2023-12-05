@@ -137,7 +137,7 @@ Example:
  firefox<ret> # launch firefox, scratchpad is then hidden.
 ```
 
-## Usage of utility scripts.
+## Usage of utility scripts
 These other bash scripts are used by `sway-launch`, the main entry point. But
 they are also yours to use elsewhere. 
 
