@@ -113,8 +113,8 @@ documentation below.
 
 ## Usage
 ```
-Usage: sway-launch [OPTIONS] [--]  <command> [arguments...]
-       sway-launch [OPTIONS] [--] '<command> [arguments...]'
+Usage: sway-launch [[OPTIONS] --]  <command> [arguments...]
+       sway-launch [[OPTIONS] --] '<command> [arguments...]'
 
 - Launch a command. Meant to be called from a wrapper script or alias, which in turn
   is called from a terminal running in the Sway/i3 scratchpad.
