@@ -12,8 +12,9 @@ as an **app launcher** with no dependencies.
 This is __not__ a TUI launcher; It just makes your terminal even __more__ of a launcher.
 
 ## Introduction
-GUI application launchers are cool, but if you're a Sway user, you might be
-interested in taking your minimalism to the next level.
+GUI application launchers like [rofi](https://github.com/davatorium/rofi) are cool, 
+but if you're a Sway user, you might be interested in taking your minimalism to 
+the next level.
 
 It turns out we've had application launchers since the 1960's: Terminals and
 shells! Indeed, shells are the only programming languages in which launching a new 
