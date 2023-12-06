@@ -20,7 +20,7 @@ shells! Indeed, shells are the only programming languages in which launching a n
 process is a first-class citizen.
 
 So, why not embrace a minimalist tiling-window-manager workflow in which your terminal
-__is__ your application launcher?
+___is___ your application launcher?
 
 If you go that route, `sway-talisman` might be for you.
 
