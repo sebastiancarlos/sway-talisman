@@ -45,11 +45,12 @@ defining every app you want to launch. And nothing stops you from
 adding extra automation and configuration before and after opening your app.
 
 ## Features
-- Use the same keybinding for two tasks: Opening your ever-ready terminal, and
+- Use the same keybinding for two tasks: Opening your ever-ready scratchpad terminal, and
   launching apps. Killer combo!
 - Every benefit of your shell (history, tab completion) is still there
   in your minimalist app launcher.
 - Automatically hides after launch, mimicking dedicated launcher behavior.
+-  Error handling. Returns exit code if the app failed to launch.
 - Configure custom pre-launch, post-launch, and window placement logistics.
   Just make a wrapper script and do whatever you want.
 - **Technically simple.** Main logic is just [10 lines of code](https://github.com/sebastiancarlos/sway-talisman/blob/main/sway-launch#L123). Everything else is UX and glue code.
@@ -81,8 +82,9 @@ make install # This will install seven bash scripts in your path.
 # bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+Shift+minus exec sway-move-to-scratchpad
 ...
-# Move the currently focused window to the scratchpad
-# bindsym $mod+Shift+minus move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+# bindsym $mod+minus scratchpad show
 bindsym $mod+minus exec sway-scratchpad-toggle
 ...
 ```
