@@ -60,7 +60,8 @@ adding extra automation and configuration before and after opening your app.
 - Detaches application processes for a clutter-free terminal session. No app logs.
 - **Modular design.** Comes with several utility scripts, useful on their own.
 - Easy installation method – **It's just a handful of bash scripts!**
-- Embraces the aesthetic of power-user minimalism.
+- Unlike Sway's `exec`, it **blocks untli a new window opens**. Great
+  for chaining commands in your initialization!
 - **No dependencies** besides Sway.
 - Supports both **Sway and i3**.
 
@@ -113,20 +114,25 @@ documentation below.
 
 ## Usage
 ```
-Usage: sway-launch [OPTIONS... --]  <command> [arguments...]
-       sway-launch [OPTIONS... --] '<command> [arguments...]'
+Usage: sway-launch [OPTIONS] [--]  <command> [arguments...]
+       sway-launch [OPTIONS] [--] '<command> [arguments...]'
 
 - Launch a command. Meant to be called from a wrapper script or alias, which in turn
   is called from a terminal running in the Sway/i3 scratchpad.
 
 - After running it, the scratchpad is hidden. This is meant to simulate the UX of an
-  application launcher like `rofi`, but from a terminal running in the scratchpad.
+  application launcher like rofi, but from a terminal running in the scratchpad.
 
 Options:
   -w, --workspace=<value>   Launch the command in the given workspace.
                             - VALUE can be "current" (default), "next", "prev",
                               "next-empty", or a number.
   -n, --no-hide-scratchpad  Do not hide the scratchpad after launching the command.
+  -e, --window-name <value> Used to check for the new window's existence (by app_id
+                            or instance). When the window exists, sway-launch exits.
+                            With no value (default), exit as soon as a new window
+                            is created.
+  -t, --no-wait             Do not wait for a window to open. Exit immediately.
   -q, --quiet               Do not print any output. (Useful for wrapping scripts
                             with their own outputs.)
   -d, --debug               Print debug output.

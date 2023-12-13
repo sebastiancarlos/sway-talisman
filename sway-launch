@@ -9,6 +9,22 @@ green="\033[32m"
 red="\033[31m"
 reset="\033[0m"
 
+# swaymsg, fallback to i3-msg
+swaymsg() {
+  if command -v swaymsg >/dev/null 2>&1; then
+    command swaymsg "$@"
+  else
+    command i3-msg "$@"
+  fi
+}
+
+# get ids and app_ids of all containers
+# - this is used to figure out when the program has launched
+get_tree_info() {
+  swaymsg -t get_tree | jq -r \
+    'recurse(.nodes[]) | recurse(.floating_nodes[]) | select(.type == "con") | "\(.id) \(.app_id) \(.window_properties.instance)"'
+}
+
 usage() {
   echo "${bold}Usage:${reset} ${green}sway-launch${reset} [OPTIONS] [--]  <command> [arguments...]"
   echo "       ${green}sway-launch${reset} [OPTIONS] [--] '<command> [arguments...]'"
@@ -24,6 +40,11 @@ usage() {
   echo "                            - VALUE can be \"current\" (default), \"next\", \"prev\","
   echo "                              \"next-empty\", or a number."
   echo "  -n, --no-hide-scratchpad  Do not hide the scratchpad after launching the command."
+  echo "  -e, --window-name <value> Used to check for the new window's existence (by app_id"
+  echo "                            or instance). When the window exists, sway-launch exits."
+  echo "                            With no value (default), exit as soon as a new window"
+  echo "                            is created."
+  echo "  -t, --no-wait             Do not wait for a window to open. Exit immediately."
   echo "  -q, --quiet               Do not print any output. (Useful for wrapping scripts"
   echo "                            with their own outputs.)"
   echo "  -d, --debug               Print debug output."
@@ -42,7 +63,9 @@ usage() {
 hide_scratchpad=1
 quiet=0
 debug=0
+wait_for_window=1
 go_to_workspace="current"
+window_name=""
 while true; do
   case "$1" in
     -n|--no-hide-scratchpad)
@@ -64,6 +87,14 @@ while true; do
     -w|--workspace)
       go_to_workspace=$2
       shift 2
+      ;;
+    -e|--window-name)
+      window_name=$2
+      shift 2
+      ;;
+    -t|--no-wait)
+      wait_for_window=0
+      shift
       ;;
     --)
       shift
@@ -91,6 +122,11 @@ fi
 
 # check if the scratchpad is focused at the time of calling this script.
 is_scratchpad_focused=$(sway-is-scratchpad-focused)
+
+# store current list of container IDs and 'app_id's
+old_tree=$(get_tree_info)
+
+# launch the command
 
 [[ $quiet -eq 0 ]] && echo "${bold}sway-launch:${reset} Launching ${green}$@${reset} ..."
 
@@ -138,9 +174,41 @@ if [[ $exit_code -ne 0 ]]; then
   exit $exit_code
 fi
 
+
+# wait for the program to launch
+# - this is done by checking if the tree has changed
+# - skip is --no-wait was provided
+waiting_time=0 
+printed_message=0
+if [[ $wait_for_window -eq 1 ]]; then
+  while true; do
+    # print message after 5 seconds
+    if [[ $waiting_time -gt 5000 && $printed_message -eq 0 ]]; then
+      if [[ $quiet -eq 0 ]]; then
+        echo "${bold}sway-launch:${reset} The program is taking a long time to launch."
+        printed_message=1
+      fi
+    fi
+    new_tree=$(get_tree_info)
+    if [[ "$new_tree" != "$old_tree" ]]; then
+      # if "window-name" was provided, check if diff contains the string
+      if [[ -n "$window_name" ]]; then
+        diff=$(diff <(echo "$old_tree") <(echo "$new_tree"))
+        if [[ "$diff" == *"$window_name"* ]]; then
+          break
+        fi
+      else
+        break
+      fi
+    fi
+    sleep 0.001
+    waiting_time=$((waiting_time+1))
+  done
+fi
+
 [[ $quiet -eq 0 ]] && echo "${bold}sway-launch:${reset} ${green}Done!${reset}"
 
-# If launching from the scratchpad, hide it afterwards
+# If launching from the scratchpad, hide it aftrewards
 # - This simulates the UX of application launchers like rofi, but for a
 #   terminal running in the scratchpad.
 if [[ $hide_scratchpad -eq 1 && $is_scratchpad_focused == "true" ]]; then
