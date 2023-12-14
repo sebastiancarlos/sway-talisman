@@ -19,16 +19,20 @@ if [[ "$1" == '-h' || "$1" == '--help' ]]; then
     exit 0
 fi
 
+quiet=0
+if [[ "$1" == '-q' || "$1" == '--quiet' ]]; then
+    quiet=1
+fi
+
 # Query sway for the focused container id and scratchpad id.
 focused_container=$(swaymsg -t get_tree | jq -r 'recurse(.nodes[]) | recurse(.floating_nodes[]) | select(.focused) | .id')
 
 scratchpad_id=$(swaymsg -t get_tree | jq -r 'recurse(.nodes[]) | recurse(.floating_nodes[]) | select(.marks[0] == "scratchpad") | .id')
 
 if [ "$focused_container" == "$scratchpad_id" ]; then
-    echo "true"
+    [[ $quiet -eq 0 ]] && echo "true"
     exit 0
 else
-    echo "false"
+    [[ $quiet -eq 0 ]] && echo "false"
     exit 1
 fi
-
