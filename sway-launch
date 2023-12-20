@@ -177,7 +177,7 @@ fi
 
 # wait for the program to launch
 # - this is done by checking if the tree has changed
-# - skip is --no-wait was provided
+# - skip if --no-wait was provided
 waiting_time=0 
 printed_message=0
 if [[ $wait_for_window -eq 1 ]]; then
