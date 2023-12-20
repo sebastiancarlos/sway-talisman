@@ -54,7 +54,7 @@ adding extra automation and configuration before and after opening your app.
 -  Error handling. Returns exit code if the app failed to launch.
 - Configure custom pre-launch, post-launch, and window placement logistics.
   Just make a wrapper script and do whatever you want.
-- **Technically simple.** Main logic is just [10 lines of code](https://github.com/sebastiancarlos/sway-talisman/blob/main/sway-launch#L123). Everything else is UX and glue code.
+- **Technically simple.** Main logic is just [10 lines of code](https://github.com/sebastiancarlos/sway-talisman/blob/main/sway-launch#L159). Everything else is UX and glue code.
 - Easily configure in which workspace your app will launch. For example, the
   **next empty workspace to the right**.
 - Detaches application processes for a clutter-free terminal session. No app logs.
