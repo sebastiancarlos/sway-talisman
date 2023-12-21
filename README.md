@@ -202,10 +202,17 @@ Usage: sway-scratchpad-toggle [-h|--help] [-q|--quiet]
  - Relies on the scratchpad having the mark "scratchpad".
 ```
 
+## As featured in
+- [Are application launchers overrated?](https://sebastiancarlos.com/are-application-launchers-overrated-e0407e220dc7)
+
+## You might also like
+- [sway-launcher-desktop](https://github.com/Biont/sway-launcher-desktop)
+- [fzf-nova](https://github.com/gotbletu/fzf-nova)
+
 ## License
 MIT
 
-## Contributing
+### Contributing
 
 We welcome contributions of all kinds. If you have a suggestion or fix, please
 feel free to open an issue or pull request.
