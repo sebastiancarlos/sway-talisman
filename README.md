@@ -219,3 +219,6 @@ feel free to open an issue or pull request.
 
 _Enjoy a lightweight, efficient, and terminal-centric launching experience with
 `sway-talisman`!_
+
+## See also
+- **[swabai](https://github.com/sebastiancarlos/swabai):** A rework of sway-talisman is included there. It also supports the Yabai tiling window manager for macOS, and many more commands.
