@@ -1,3 +1,8 @@
+### This repo is now Archived
+All the scripts from this repo are now available at [SWABAI](https://github.com/sebastiancarlos/swabai), including other window-manager commands and Yabai support.
+
+At the time of writing, the workflow described here works exactly the same in SWABAI. As SWABAI is now my daily driver, I'll continue development there.
+
 # Sway-Talisman: Sway – Terminal Application Launcher in Scratchpad, Minimalist And Native
 <p align="center">
   <img src="https://github.com/sebastiancarlos/sway-talisman/assets/88276600/7847675e-3758-43b5-bc86-e39f18fb7af1" />
